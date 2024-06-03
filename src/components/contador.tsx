@@ -9,8 +9,8 @@ interface TimerData{
 
 export default function Timer(){
 
-const contadores: TimerData = useQuery(GetTimerQuery).data ?? {id: '', time: 0};
-
+const contadores: TimerData = useQuery(GetTimerQuery()).data ?? {id: '', time: 0};
+console.log(contadores);
 const { mutate, isPending, isError, isSuccess, error } = UpdateTimerQuery(); // De esta manera ejecuto la mutación del recurso
 
 const handleMutate = async () => { //Manejamos el estado de la mutación para ejecutarla en el evento click
