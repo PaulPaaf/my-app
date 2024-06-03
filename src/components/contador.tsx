@@ -1,5 +1,5 @@
 'use client'
-import { getTimerQuery, updateTimerQuery } from "@/queries/contador";
+import { GetTimerQuery, UpdateTimerQuery } from "@/queries/contador";
 import { useQuery } from "@tanstack/react-query";
 
 interface TimerData{
@@ -9,9 +9,9 @@ interface TimerData{
 
 export default function Timer(){
 
-const contadores: TimerData = useQuery(getTimerQuery).data ?? {id: '', time: 0};
+const contadores: TimerData = useQuery(GetTimerQuery).data ?? {id: '', time: 0};
 
-const { mutate, isPending, isError, isSuccess, error } = updateTimerQuery(); // De esta manera ejecuto la mutación del recurso
+const { mutate, isPending, isError, isSuccess, error } = UpdateTimerQuery(); // De esta manera ejecuto la mutación del recurso
 
 const handleMutate = async () => { //Manejamos el estado de la mutación para ejecutarla en el evento click
     try{

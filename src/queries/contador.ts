@@ -1,13 +1,14 @@
+'use client'
 import { queryOptions, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getTimer, updateTimer } from '@/services/contador'
 
-export const getTimerQuery = queryOptions({
+export const GetTimerQuery = queryOptions({
     queryKey: ['Timer'],
     queryFn: () => getTimer(),
     staleTime: Infinity
 })
 
-export const updateTimerQuery = () => {
+export const UpdateTimerQuery = () => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationKey: ['updateTimer'],
@@ -16,7 +17,7 @@ export const updateTimerQuery = () => {
         },
         onSuccess: () => {
             console.log('Timer updated')
-            queryClient.invalidateQueries(getTimerQuery);
+            queryClient.invalidateQueries(GetTimerQuery);
         }
     })
 }
