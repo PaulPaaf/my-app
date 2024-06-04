@@ -17,4 +17,11 @@ export async function updateTimer(){
             data: {time: newTime}
         });
         return updatedTimer.time ?? 0;
-    }}
+    }else{
+        const newTimer = await prismaClient.timer.create({
+            data: {time: 0}
+        });
+        return newTimer.time;
+    }
+
+}
